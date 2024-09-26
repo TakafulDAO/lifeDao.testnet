@@ -1,0 +1,45 @@
+[profile.default]
+src = 'contracts'
+out = 'out'
+libs = ['lib']
+test = 'test'
+cache_path = 'cache_forge'
+ffi = true
+ast = true
+build_info = true
+extra_output = ['storageLayout']
+fs_permissions = [
+    { access = "read", path = "./out" },
+    { access = 'read', path = './deployments' },
+    { access = 'read', path = './scripts/chainlink-functions/' },
+]
+
+# Compiler settings
+auto_detect_solc = true
+optimizer = true
+optimizer_runs = 100000
+evm_version = 'cancun'
+
+remappings = [
+    '@openzeppelin/contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/contracts/',
+    '@openzeppelin/contracts/=lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/',
+    'openzeppelin-foundry-upgrades/src/=lib/openzeppelin-foundry-upgrades/src/',
+    '@chainlink/=lib/chainlink-brownie-contracts/',
+    'foundry-devops/=lib/foundry-devops/',
+    'forge-std/=lib/forge-std/src/',
+]
+
+[fuzz]
+runs = 256
+seed = "0x2"
+
+[invariant]
+runs = 256
+depth = 32
+fail_on_revert = true
+
+[etherscan]
+arb_sepolia = { key = "${ARBISCAN_API_KEY}" }
+
+[rpc_endpoints]
+arb_sepolia = "${ARBITRUM_TESTNET_SEPOLIA_RPC_URL}"
