@@ -39,7 +39,7 @@ The dapp is available at [The Life DAO](https://testnet.thelifedao.io/)
 1. Clone the repo and install the dependencies
 
 ```bash
-git clone https://github.com/TakafulDAO/lifeDao.testnet
+git clone https://github.com/TakafulDAO/lifeDao.testnet.git
 cd lifeDao.testnet
 yarn install
 make all
